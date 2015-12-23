@@ -5,8 +5,8 @@ module.exports = function(grunt) {
   pkg: grunt.file.readJSON('package.json'),
   postcss: {
     dist: {
-        src: 'src/scss/project.scss',
-        dest: 'css/paleography.css'
+        src: 'src/sass/theme.scss',
+        dest: 'css/questingtheair.css'
     },
     options: {
         map: true,
@@ -24,14 +24,14 @@ module.exports = function(grunt) {
   cssmin: {
    target: {
     files: {
-      'css/paleography.min.css': ['css/paleography.css']
+      'css/questingtheair.min.css': ['css/questingtheair.css']
       }
     }
   },
   uglify: {
     my_target: {
       files: {
-        'js/paleography.min.js': ['js/paleography.js']
+        'js/questingtheair.min.js': ['js/questingtheair.js']
       }
     }
   },
@@ -41,11 +41,11 @@ module.exports = function(grunt) {
     },
     dist: {
       src: ['src/js/*.js', 'src/js/*/*.js'],
-      dest: 'js/paleography.js',
+      dest: 'js/questingtheair.js',
     },
   },
   jshint: {
-    beforeconcat: ['src/js/*.paleography.js'],
+    beforeconcat: ['src/js/*.questingtheair.js'],
   },
   imagemin: {
     dynamic: {
@@ -62,19 +62,19 @@ module.exports = function(grunt) {
   // Load the plugin that provides the tasks.
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
   grunt.registerTask('default', [
     'postcss',
     'cssmin',
-    'uglify',
     'concat',
     'jshint',
-    'imagemin'
+    'imagemin',
+    'uglify'
     ]);
 
 };
