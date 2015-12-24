@@ -3443,10 +3443,23 @@
 ;// Models
 
 var PostModel = Backbone.Model.extend({
-  
+
 });
 var postModel = new PostModel();
 ;// Views
+
+var PostItemView = Backbone.View.extend({
+
+    tagName:"article",
+
+    template:_.template($('#tpl-post-item').html()),
+
+    render:function (eventName) {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    }
+});
+
 var PostListView = Backbone.View.extend({
 
     tagName: "section",
@@ -3470,7 +3483,6 @@ var PostListItemView = Backbone.View.extend({
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
     }
-
 });
 ;var PostCollection = Backbone.Collection.extend({
     model: PostModel,
@@ -3480,7 +3492,8 @@ var PostListItemView = Backbone.View.extend({
 var PostRouter = Backbone.Router.extend({
 
     routes: {
-        "": "displayPosts"
+        ""            : "displayPosts",
+        "/slug"       : "postRoute"
     },
 
 	displayPosts: function() {
@@ -3493,9 +3506,17 @@ var PostRouter = Backbone.Router.extend({
 	           $('#hasscript').html(postListView.render().el);
 	       }
 	   });
-	}
+	},
+  postRoute: function( slug ) {
 
+				var postItemView = new PostItemView();
+
+				/**
+				 * Set the post ID, trigginering a fetch.
+				 */
+				this.todoList.focusOnTodoItem(slug);
+	}
 });
 
 var postRouter = new PostRouter();
-Backbone.history.start();
+Backbone.history.start({ pushState: true });

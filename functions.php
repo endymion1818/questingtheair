@@ -39,30 +39,4 @@ function questingtheair_setup() {
 endif; // questingtheair_setup
 add_action( 'after_setup_theme', 'questingtheair_setup' );
 
-function questingtheair_get_json( $_post ) {
-	foreach ( $_post as $post ) {
-		$_post['post_class'] = implode( ' ', get_post_class( '', $_post['ID'] ) );
-
-		// Get next and previous links
-		global $post;
-		$post = get_post( $_post['ID'] );
-
-		$previous_post = get_adjacent_post( false, '', true );
-		if ( $previous_post ) {
-			$_post['previous_post_url']   = get_permalink( $previous_post );
-			$_post['previous_post_title'] = get_the_title( $previous_post );
-		}
-
-		$next_post = get_adjacent_post( false, '', false );
-		if ( $next_post ) {
-			$_post['next_post_url']   = get_permalink( $next_post );
-			$_post['next_post_title'] = get_the_title( $next_post );
-		}
-
-	}
-	return $_post;
-}
-
-add_filter( 'json_prepare_post', 'questingtheair_get_json' );
-
 ?>
