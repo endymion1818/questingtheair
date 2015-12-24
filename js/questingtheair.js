@@ -3464,7 +3464,7 @@ var PostListItemView = Backbone.View.extend({
 
     tagName:"article",
 
-    template:_.template($('#tpl-post-item').html()),
+    template:_.template($('#tpl-post-list-item').html()),
 
     render:function (eventName) {
         $(this.el).html(this.template(this.model.toJSON()));

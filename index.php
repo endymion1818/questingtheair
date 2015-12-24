@@ -33,13 +33,14 @@
 
 						<?php while ( have_posts() ) : the_post(); ?>
 
-						<article class="article">
+						<section class="section">
 
-						<h1><?php the_title();?></h1>
-						<small><?php _e('By ', 'questingtheair'); the_author(); _e('on ', 'questingtheair'); the_date(); ?>
-						<?php the_content();?>
-
-						</article>
+							<h1><?php the_title();?></h1>
+							<small><?php _e('By ', 'questingtheair'); the_author(); _e('on ', 'questingtheair'); the_date(); ?>
+							<?php the_excerpt();?>
+							<a href="<?php the_permalink();?>" title="<?php the_title();?>">View post</a>
+							<hr/>
+						</section>
 
 						<?php endwhile; ?>
 
@@ -52,9 +53,9 @@
 					<?php endif; ?>
 
 				</noscript>
-				<article class="article" id="hasscript">
+				<section class="section" id="hasscript">
 
-				</div>
+				</section>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div><!-- #content -->
@@ -62,7 +63,7 @@
 
 <footer id="colophon" class="site-footer" role="contentinfo">
 	<div class="site-info container">
-		<p><?php _e('theme by Ben Read at ', 'questingtheair');?> <a href="http://deliciousreverie.co.uk" title="Delicious Reverie: blog of developer / designer Benjamin Read"><?php _e('Deliciousreverie.co.uk');?></a>
+		<p><?php _e('theme by Ben Read at ', 'questingtheair');?> <a href="http://deliciousreverie.co.uk" title="Delicious Reverie: blog of developer / designer Benjamin Read"><?php _e('deliciousreverie.co.uk');?></a>
 	</div><!-- .site-info -->
 </footer>
 
