@@ -3457,7 +3457,13 @@ var PostItemView = Backbone.View.extend({
     render:function (eventName) {
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
-    }
+    },
+    events: {
+  		'click a': function(e){
+  			e.preventDefault();
+  			Backbone.history.navigate(e.target.pathname, {trigger: true});
+  		}
+  	}
 });
 
 var PostListView = Backbone.View.extend({
@@ -3493,7 +3499,7 @@ var PostRouter = Backbone.Router.extend({
 
     routes: {
         ""            : "displayPosts",
-        "/slug"       : "postRoute"
+        "/:slug"       : "postRoute"
     },
 
 	displayPosts: function() {
@@ -3506,15 +3512,6 @@ var PostRouter = Backbone.Router.extend({
 	           $('#hasscript').html(postListView.render().el);
 	       }
 	   });
-	},
-  postRoute: function( slug ) {
-
-				var postItemView = new PostItemView();
-
-				/**
-				 * Set the post ID, trigginering a fetch.
-				 */
-				this.todoList.focusOnTodoItem(slug);
 	}
 });
 

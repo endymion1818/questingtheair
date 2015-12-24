@@ -1,4 +1,17 @@
 .container {
-  max-width: 90vw;
+  max-width: 98vw;
   margin: 0 auto;
+}
+footer {
+  clear: both;
+}
+@media (min-width: 768px) {
+  main {
+    width: 66%;
+    float: left;
+  }
+  aside {
+    width: 33%;
+    float: left;
+  }
 }

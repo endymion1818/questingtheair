@@ -9,7 +9,13 @@ var PostItemView = Backbone.View.extend({
     render:function (eventName) {
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
-    }
+    },
+    events: {
+  		'click a': function(e){
+  			e.preventDefault();
+  			Backbone.history.navigate(e.target.pathname, {trigger: true});
+  		}
+  	}
 });
 
 var PostListView = Backbone.View.extend({

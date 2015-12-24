@@ -11,7 +11,7 @@
 <body <?php body_class(); ?>>
 
 <header class="container site-masthead" role="banner">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'picard' ); ?></a>
+	<a class="skip-link sr-only" href="#content"><?php _e( 'Skip to content', 'picard' ); ?></a>
 	<div class="site-branding">
 		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 		<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
